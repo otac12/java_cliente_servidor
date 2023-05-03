@@ -4,13 +4,13 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Cliente{
+public class Cliente_2{
 
 	public static void main (String[] args){
 
 	  final String host = "10.104.116.185";
 
-      final int puerto = 2000;
+      final int puerto = 2001;
 
       int id=0;
       DataInputStream in;

@@ -1,14 +1,19 @@
 import java.io.*;
 
-public class Tablero implements Serializable{
+public class Tablero implements Serializable {
  int [][] tablero;
  public int x;
  public int y;
 
-public Tablero(int xx, int yy){
+public void agregar_barcos(int [][] barco){
+    
+}
+
+public void dimensiones_tablero(int xx, int yy){
 
    x=xx;
    y=yy;
+
   tablero= new int[ x ][ y ];
 
   for (int i=0 ;i< x ;i++ ) {
@@ -21,6 +26,7 @@ public Tablero(int xx, int yy){
 }
 
 public void imprimir_tablero(){
+
   for (int i=0 ;i<x;i++ ) {
    for (int j=0;j<y ;j++ ) {
       System.out.print(tablero[i][j]);
