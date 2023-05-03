@@ -1,48 +1,45 @@
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.io.IOException;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.util.*;
+
 
 public class Servidor{
+    public static void main (String [] arg){
+    	int x,y,i;
+    	String mensaje;
+    	int puerto=2000;
+        Cliente_servidor [] hilos = new Cliente_servidor [2];
+        Socket [] cliente = new Socket[2];
+        ServerSocket server;
 
-public static void main(String [] args){
+    	x=300;
+    	y=300;
+        i=0;
 
-	ServerSocket servidor =null;
-	Socket sc= null;
-    DataInputStream in;
-    DataOutputStream out;
-	final int Port = 2000;
+        Variable_global global = new Variable_global(x,y);
+        
+        while(true){
+           
+           //if (){
+           	try {
+            server = new ServerSocket(puerto + i);
+            cliente[i] = server.accept();
+            System.out.println("Se conecto un cliente");
 
+            hilos[i] = new Cliente_servidor(global,cliente[i],i);
+            hilos[i].start();
 
-	try {
+           i++;
+           }catch(IOException e){
+             System.out.println("error a iniciar conección");
+          // }
+         }
+           
+            
+        }
+
       
-      servidor =new ServerSocket(Port,300);
-
-      System.out.println("Servidor iniciado");
-      
-      while(true){
-
-        sc = servidor.accept();
-        System.out.println("Un cliente se a conectado");
-        in = new DataInputStream(sc.getInputStream());
-        out = new DataOutputStream(sc.getOutputStream());
-
-        String mensaje = in.readUTF();
-
-        System.out.println(mensaje);
-
-        out.writeUTF("holaa");
-
-        sc.close();
-        System.out.println("desconectado");
-      }
-       
-	}catch(IOException ex){
-        Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE,null,ex);
-	}
-
-	}
+    }
+    
 }
