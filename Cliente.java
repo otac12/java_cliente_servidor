@@ -1,5 +1,5 @@
 import java.io.*;
-
+import java.util.Scanner;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,12 +13,17 @@ public class Cliente{
       final int puerto = 2000;
 
       int id=0;
+
+      int dimension_barco_x;
+      int dimension_barco_y;
+
       DataInputStream in;
       DataOutputStream out_data;
       ObjectOutputStream out;
 
-      Tablero tab = new Tablero();
-      tab.dimensiones_tablero(300,300);
+      Tablero tab = new Tablero(300,300);
+
+      Scanner scan = new Scanner(System.in);
 
 	try {
 
@@ -27,7 +32,24 @@ public class Cliente{
           in = new DataInputStream(sc.getInputStream());
           out_data = new DataOutputStream(sc.getOutputStream());
           out = new ObjectOutputStream(sc.getOutputStream());
+
+          //codigo ejecutandoces
+
+          System.out.println("Ingrese las cordenadas de su barco 300x300 ");
+          System.out.println("Tiene barcos de dimensiones 20x20 ");
+
+          for (int i=0;i<4 ; i++ ) {
+
+            System.out.println("Ingrese cordenada x ");
+             dimension_barco_x=scan.nextInt();
+             System.out.println("Ingrese cordenada y");
+             dimension_barco_y=scan.nextInt();
+
+             tab.agregar_barcos(dimension_barco_x,dimension_barco_y);
+
+          }
           
+
           System.out.println(tab.x);
           out_data.writeInt(tab.x);
           //out_data.writeInt(id);

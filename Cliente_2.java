@@ -17,8 +17,7 @@ public class Cliente_2{
       DataOutputStream out_data;
       ObjectOutputStream out;
 
-      Tablero tab = new Tablero();
-      tab.dimensiones_tablero(300,300);
+      Tablero tab = new Tablero(300,300);
 
 	try {
 
