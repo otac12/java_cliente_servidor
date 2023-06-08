@@ -4,8 +4,8 @@ public class Variable_global{
 	
 	public Variable_global (int x , int y){
 
-         tab[0]= new Tablero(x,y);
-         tab[1]= new Tablero(x,y);
+         tab[0] = new Tablero(x,y);
+         tab[1] = new Tablero(x,y);
 
 	}
 

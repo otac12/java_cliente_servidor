@@ -26,7 +26,12 @@ public boolean agregar_barcos(int barco_x,int barco_y){
 
    boolean existe=true;
 
-   for (int i=barco_x - 10; i < barco_x + 10; i++ ) {
+   if(0>barco_x-10 || 0>barco_y-10 || 300<barco_y+10 ||300<barco_x+10 ){
+        System.out.println("fuera del tablero");
+        existe=false;
+    }else{
+
+      for (int i=barco_x - 10; i < barco_x + 10; i++ ) {
 
       for (int j=barco_y - 10; j < barco_y + 10; j++ ) {
          
@@ -38,7 +43,9 @@ public boolean agregar_barcos(int barco_x,int barco_y){
 
       }
       
-   }
+     }
+
+    }
 
 if (existe==true) {
 

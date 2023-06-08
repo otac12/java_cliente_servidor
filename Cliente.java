@@ -8,14 +8,14 @@ public class Cliente{
 
 	public static void main (String[] args){
 
-	  final String host = "10.104.116.185";
+	  final String host = "192.168.88.101";
 
       final int puerto = 2000;
 
       int id=0;
 
-      int dimension_barco_x;
-      int dimension_barco_y;
+      int barco_x;
+      int barco_y;
 
       DataInputStream in;
       DataOutputStream out_data;
@@ -40,12 +40,17 @@ public class Cliente{
 
           for (int i=0;i<4 ; i++ ) {
 
-            System.out.println("Ingrese cordenada x ");
-             dimension_barco_x=scan.nextInt();
+             System.out.println("Ingrese cordenada x ");
+             barco_x=scan.nextInt();
              System.out.println("Ingrese cordenada y");
-             dimension_barco_y=scan.nextInt();
-
-             tab.agregar_barcos(dimension_barco_x,dimension_barco_y);
+             barco_y=scan.nextInt();
+             
+             if(tab.agregar_barcos(barco_x,barco_y) == false){
+               i--;
+             }else{
+               System.out.println("Se agrego el barco");
+               tab.imprimir_tablero();
+             }
 
           }
           
@@ -59,7 +64,7 @@ public class Cliente{
          
           System.out.println(mensaje);
 
-         System.out.println("termino de sesion");
+          System.out.println("termino de sesion");
 
          sc.close();
 
