@@ -4,9 +4,10 @@ public class Tablero implements Serializable {
  int [][] tablero;
  public int x;
  public int y;
+ public int total_sub;
 
- public Tablero(int xx, int yy){
-
+ public Tablero(int xx, int yy,int sub){
+   total_sub=sub;
    x=xx;
    y=yy;
 
@@ -26,38 +27,22 @@ public boolean agregar_barcos(int barco_x,int barco_y){
 
    boolean existe=true;
 
-   if(0>barco_x-10 || 0>barco_y-10 || 300<barco_y+10 ||300<barco_x+10 ){
+   if(0>barco_x || 0>barco_y || 10<barco_y ||10<barco_x ){
         System.out.println("fuera del tablero");
         existe=false;
     }else{
-
-      for (int i=barco_x - 10; i < barco_x + 10; i++ ) {
-
-      for (int j=barco_y - 10; j < barco_y + 10; j++ ) {
          
-         if(tablero[i][j]==1){
+         if(tablero[barco_x][barco_y]==1){
 
             existe=false;
-            break;
+         
          }
-
-      }
-      
-     }
 
     }
 
 if (existe==true) {
-
-     for (int i=barco_x - 10; i < barco_x + 10; i++ ) {
-
-      for (int j=barco_y - 10; j < barco_y + 10; j++ ) {
-         
-         tablero[i][j]=1;
-
-      }
-      
-   }
+       
+         tablero[barco_x-1][barco_y-1]=1;
 
    return true;
 }else{
@@ -80,5 +65,19 @@ public void imprimir_tablero(){
   }
 
 }
+
+public boolean localizacion (int [] tiro){
+      
+      boolean acerto=true;
+      for (int i=0;i<10 ; i++) {
+         for (int j=0;j<10 ;j++ ) {
+     
+          if(tablero[tiro[0]][tiro[1]]==1){
+              acerto=false;
+           }
+          }
+      }
+      return acerto;
+  }
 
 }
